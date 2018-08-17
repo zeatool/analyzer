@@ -18,15 +18,18 @@ class FileReaderTest extends TestCase
         fclose($fd);
     }
 
-    public function testFileRead(){
+    public function testFileRead()
+    {
         $reader = new FileReader();
         $data = $reader->setSource(self::$filename)->read();
-        $this->assertSame($data,"Привет мир");
+        $this->assertSame($data, "Привет мир");
     }
 
-    public function testFileNotFound(){
+    public function testFileNotFound()
+    {
         $reader = new FileReader();
-
+        $this->expectException(\zeatool\analyzer\Exception\ReadException::class);
+        $reader->setSource("nofileandits.pitty")->read();
     }
 
     public static function tearDownAfterClass()

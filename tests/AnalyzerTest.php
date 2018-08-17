@@ -19,15 +19,15 @@ class AnalyzerTest extends TestCase
             'Мяу' => 2,
             'МЯУ' => 1,
             'ГАВ' => 2,
-            'гАв' => 1
-        ],$data);
+            'гАв' => 1,
+        ], $data);
     }
 
     public function testNonStringReaderAnalyze()
     {
         $stub = $this->createMock(\zeatool\analyzer\Reader\ReaderInterface::class);
         $stub->method('read')
-            ->willReturn([1,2,4]);
+            ->willReturn([1, 2, 4]);
 
         $analyzer = new Analyzer($stub);
 

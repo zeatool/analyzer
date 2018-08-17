@@ -1,20 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: roman
- * Date: 17.08.18
- * Time: 8:53
- */
 
 namespace zeatool\analyzer\Reader;
 
 use zeatool\analyzer\Exception\ReadException;
 
+/**
+ * Class FileReader
+ * @package zeatool\analyzer\Reader
+ */
 class FileReader implements ReaderInterface
 {
+    /**
+     * @var
+     */
     protected $source;
-    protected $data;
+    /**
+     * @var string
+     */
+    protected $data = "";
 
+    /**
+     * @param $source
+     * @return $this
+     */
     public function setSource($source)
     {
         $this->source = $source;
@@ -22,6 +30,10 @@ class FileReader implements ReaderInterface
         return $this;
     }
 
+    /**
+     * @return bool|string
+     * @throws ReadException
+     */
     public function read()
     {
         try {
