@@ -18,6 +18,19 @@ class AnalyzerTest extends TestCase
         $this->assertSame(sizeof($diff),0);
     }
 
+    public function testPositiveCountAnalyze()
+    {
+        $stub = $this->createMock(\zeatool\analyzer\Reader\ReaderInterface::class);
+        $stub->method('read')
+            ->willReturn('Кошка собаКККА Собака            Кошка мЫшь');
+
+        $analyzer = new Analyzer($stub);
+
+        $count = $analyzer->analyze()->getCount();
+
+        $this->assertSame($count,4);
+    }
+
     public function testNonStringReaderAnalyze()
     {
         $stub = $this->createMock(\zeatool\analyzer\Reader\ReaderInterface::class);

@@ -63,4 +63,11 @@ class Analyzer
     {
         return $this->result;
     }
+
+    /**
+     * @return int
+     */
+    public function getCount(){
+        return sizeof($this->result);
+    }
 }
