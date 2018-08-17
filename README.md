@@ -11,7 +11,9 @@ $ composer install
 ## Usage
 
 ``` php
-$reader = new FileReader()->setSource("file.txt");
+$reader = new zeatool\analyzer\Reader\FileReader()->setSource("file.txt");
+
+$analyzer = new zeatool\analyzer\Analyzer($reader);
 $data = $analyzer->analyze()->getResult();
 ```
 
