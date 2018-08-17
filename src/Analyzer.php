@@ -51,11 +51,7 @@ class Analyzer
             throw new AnalyzeException($e->getMessage());
         }
 
-        $this->result = array_reduce($words, function ($result, $elem) {
-            $result[$elem] = isset($result[$elem]) ? $result[$elem] + 1 : 1;
-
-            return $result;
-        });
+        $this->result = array_unique($words);
 
         return $this;
     }
